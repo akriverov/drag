@@ -12,7 +12,7 @@ export function ButtonSelector(props) {
 
     return (
         <>
-        <div className={"clabel"}>ADD A LINK BUTTON</div>
+        <div className={"clabel"}>Agrega un boton de link</div>
         <div style={{ display: 'flex', justifyContent: 'space-between' }}>
             <input
                 className={'minimal-input'}

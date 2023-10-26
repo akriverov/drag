@@ -1,42 +1,54 @@
-import React from 'react'
+import React from "react";
 
-export default function MobileBoundary ({mobileWidth = 600}) {
-    return window.innerWidth > mobileWidth && <>
+// Componente principal que representa una línea divisoria en función del ancho de la ventana
+export default function MobileBoundary({ mobileWidth = 600 }) {
+  return (
+    window.innerWidth > mobileWidth && (
+      <>
+        {/* Renderiza la línea divisoria a la izquierda de la ventana */}
         <Boundary mobileWidth={mobileWidth} />
-        <Boundary mobileWidth={mobileWidth} right/>
-    </>
+        {/* Renderiza la línea divisoria a la derecha de la ventana */}
+        <Boundary mobileWidth={mobileWidth} right />
+      </>
+    )
+  );
 }
 
-function Boundary({mobileWidth, right}) {
-    return <>
-    <div
-        className={'mobile-align-bg'}
+// Componente Boundary que representa una línea divisoria
+function Boundary({ mobileWidth, right }) {
+  return (
+    <>
+      <div
+        className={"mobile-align-bg"}
         style={{
-            position: 'fixed',
-            left: right? undefined: `0px`,
-            right: right? `0px`: undefined,
-            width: `calc((100vw - ${mobileWidth}px)/2)`,
-            height: '100vh',
+          position: "fixed",
+          left: right ? undefined : `0px`,
+          right: right ? `0px` : undefined,
+          width: `calc((100vw - ${mobileWidth}px)/2)`,
+          height: "100vh",
         }}
-    >
+      >
+        {/* Renderiza una guía de alineación a la izquierda o derecha de la línea divisoria */}
         <div
-            className={'page-align-guide mobile-align-guide active'}
-            style={{
-                position: "absolute",
-                right: right? undefined: "0px",
-                left: right? "0px": undefined,
-            }}
+          className={"page-align-guide mobile-align-guide active"}
+          style={{
+            position: "absolute",
+            right: right ? undefined : "0px",
+            left: right ? "0px" : undefined,
+          }}
         />
         <div
-            style={{
-                position: 'absolute',
-                width: '100%',
-                top: '50vh',
-                textAlign: 'center',
-            }}
+          style={{
+            position: "absolute",
+            width: "100%",
+            top: "50vh",
+            textAlign: "center",
+          }}
         >
-            ««« Not visible on phone »»»
+          {/* Texto que se muestra en la línea divisoria */}
+          ««« Not visible on phone »»»
         </div>
-    </div>
+      </div>
     </>
+  );
 }

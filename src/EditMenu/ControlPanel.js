@@ -144,8 +144,8 @@ function DefaultControlPanel({
 }
 
 function UriInputModal(props) {
-  console.log(props);
   const [value, setValue] = useState(props.prefill || "https://");
+  
   return (
     <div style={{ display: "flex", justifyContent: "space-between" }}>
       <input

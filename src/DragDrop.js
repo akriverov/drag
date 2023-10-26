@@ -1,4 +1,4 @@
-import React, {useState, useEffect, useCallback} from 'react';
+import React, { useState, useEffect, useCallback } from "react";
 import GenericModal from "./utils/ui/GenericModal";
 import {
   Column,
@@ -24,25 +24,29 @@ function DragDrop({
   initialState,
   pending,
 }) {
+  // Estado local para los elementos arrastrables y su estado
   const [items, setItems] = useState(initialState || {});
   const [selected, setSelected] = useState([]);
   const [mode, setMode] = useState(EditorModes.VIEW);
   const [modal, setModal] = useState(null);
 
+  // Historial para deshacer/rehacer cambios
   const [pastItems, setPastItems] = useState([initialState || {}]);
   const [undoCount, setUndoCount] = useState(0);
 
   const [pageHeight, setPageHeight] = useState(0);
   const [pageWidth, setPageWidth] = useState(0);
 
+  // Función para eliminar un elemento de la lista
   function deleteItemFromList(key) {
-    var newItems = items;
+    var newItems = { ...items }; // Copia del estado
     newItems[key] && delete newItems[key];
     setItems(newItems);
     debounceElemdataHistoryUpdate(pastItems, newItems, undoCount);
     setSelected([]);
   }
 
+  // Función para actualizar un elemento
   function onUpdateDiv(divId, newProps) {
     var oldItems = items[divId] || {};
     const updatedItems = {
@@ -53,6 +57,7 @@ function DragDrop({
     setItems(updatedItems);
   }
 
+  // Función para deshacer cambios
   function undo(e) {
     setItems(pastItems[pastItems.length - 1 - (undoCount + 1)]);
     setUndoCount(undoCount + 1);
@@ -60,6 +65,7 @@ function DragDrop({
     e.stopPropagation();
   }
 
+  // Función para rehacer cambios
   function redo(e) {
     setItems(pastItems[pastItems.length - 1 - (undoCount - 1)]);
     setUndoCount(undoCount - 1);
@@ -67,6 +73,7 @@ function DragDrop({
     e.stopPropagation();
   }
 
+  // Función para guardar cambios
   function onSaveClicked() {
     if (!immutable) {
       setMode(EditorModes.VIEW);
@@ -74,10 +81,12 @@ function DragDrop({
     }
   }
 
+  // Función para cambiar al modo de edición
   function onEditClicked() {
     setMode(EditorModes.EDIT);
   }
 
+  // Función para agregar un elemento a la lista
   function addItemToList(data, id) {
     var newItem = {
       id: id || guidGenerator(),
@@ -93,6 +102,7 @@ function DragDrop({
     setSelected([newItem.id]);
   }
 
+  // Función que maneja la actualización del historial con un retardo
   const debounceElemdataHistoryUpdate = useCallback(
     debounce((oldItemsList, newItem, undoCount) => {
       if (undoCount > 0) {
@@ -136,7 +146,7 @@ function DragDrop({
             height: pageWidth ? pageHeight * getMobileScaleRatio() : undefined,
           }}
           onClick={(e) => {
-            console.log("bg got clicked now");
+            console.log("Fondo fue clicado");
             setSelected(["bg"]);
             console.log(e);
           }}

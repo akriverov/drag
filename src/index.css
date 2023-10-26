@@ -1,205 +1,201 @@
 /* DRAGGABLE DIV VISUAL */
 .draggable:hover {
-    -webkit-filter: drop-shadow(0px 0px 5px rgba(64, 224, 208, 0.81));
-    filter: drop-shadow(0px 0px 5px rgba(64, 224, 208, 0.81));
-    cursor: move;
-  }
-  
-  .draggableselected {
-    -webkit-filter: drop-shadow(0px 0px 5px rgba(255, 255, 40, 1));
-    filter: drop-shadow(0px 0px 5px rgba(255, 255, 40, 1));
-  }
-  
+  -webkit-filter: drop-shadow(0px 0px 5px rgba(64, 224, 208, 0.81));
+  filter: drop-shadow(0px 0px 5px rgba(64, 224, 208, 0.81));
+  cursor: move;
+}
+
+.draggableselected {
+  -webkit-filter: drop-shadow(0px 0px 5px rgba(255, 255, 40, 1));
+  filter: drop-shadow(0px 0px 5px rgba(255, 255, 40, 1));
+}
+
+.dragHandle {
+  position: absolute;
+  border: 1px solid black;
+  border-radius: 2px;
+  background-color: white;
+  padding: 3px;
+  cursor: nesw-resize;
+
+  z-index: 9999999;
+}
+
+@media only screen and (max-width: 768px) {
   .dragHandle {
-    position: absolute;
-    border: 1px solid black;
-    border-radius: 2px;
-    background-color: white;
-    padding: 3px;
-    cursor: nesw-resize;
-  
-    z-index: 9999999;
+      padding: 10px;
   }
-  
-  @media only screen and (max-width: 768px) {
-    .dragHandle {
-        padding: 10px;
-    }
+}
+
+@media only screen and (min-width: 768px) {
+  .hovershadow {
+      box-shadow: 0px 0px 0px rgb(0 0 0 / 16%);
+      transition: box-shadow 0.1s ease-in-out;
   }
-  
-  @media only screen and (min-width: 768px) {
-    .hovershadow {
-        box-shadow: 0px 0px 0px rgb(0 0 0 / 16%);
-        transition: box-shadow 0.1s ease-in-out;
-    }
-  
-    /* Transition to a bigger shadow on hover */
-    .hovershadow:hover {
-        box-shadow: 4px 4px 0px rgb(0 0 0 / 16%);
-    }
-  
-    /* Transition to a bigger shadow on hover */
-    .hovershadow:active {
-        box-shadow: 2px 2px 0px rgb(0 0 0 / 16%);
-    }
+
+  /* Transition to a bigger shadow on hover */
+  .hovershadow:hover {
+      box-shadow: 4px 4px 0px rgb(0 0 0 / 16%);
   }
-  
-  .dragHandle2 {
-    position: absolute;
-    padding: 12px;
-    border: 1px solid black;
-    background-color: white;
-    padding: 3px;
-    z-index: 9999999;
-    cursor: sw-resize;
+
+  /* Transition to a bigger shadow on hover */
+  .hovershadow:active {
+      box-shadow: 2px 2px 0px rgb(0 0 0 / 16%);
   }
+}
+
+.dragHandle2 {
+  position: absolute;
+  padding: 10px;
+  border: 1px solid black;
+  background-color: white;
+  padding: 15px;
+  z-index: 9999999;
+  cursor: sw-resize;
+}
+
+ /* CONTROL PANEL */
   
-  /* CONTROL PANEL */
+ .cpanel {
+  min-width: 5px;
+  border: 1px solid black;
+  background-color: rgba(255, 255, 255, 0.64);
+  backdrop-filter: blur(8px);
+  border-radius: 3px;
+  z-index: 9999999999;
+}
+
+.cpanel-col-buttons:hover > * {
+  opacity: 0.5;
+}
+
+.cpanel-col-buttons:hover > *:hover {
+  transform: scale(1.1);
+  opacity: 1;
+}
+
+.cpanel-shadow {
+  box-shadow: 4px 4px 0px rgb(0 0 0 / 16%);
+}
+
+.cpanel-col:not(:last-child) {
+  border-right: 1px solid black;
+}
+
+.clabel {
+  font-size: 12px;
+  font-weight: bold;
+  color: black;
+  padding: 5px;
+}
+
+.cbutton {
+  width: 50px;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 3px;
+  cursor: pointer;
+}
+
+.cbuttoninner {
+  width: 25px;
+  height: 25px;
+}
+
+.cbuttoninner:hover {
+  background-color: rgba(1, 1, 1, 0.1);
+}
+
+.cbuttoninner-selected {
+  background-color: rgba(1, 1, 1, 0.3);
+}
+
+.cbuttonmain {
+  border: 1px solid black;
+  color: black;
+  background-color: white;
+  width: 52px;
+  height: 52px;
+}
+
+.flexRow {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.minimal-input {
+  border: none;
+}
+
+.minimal-input:focus {
+  outline: none;
+}
+
+ /* Tooltip container */
   
-  .cpanel {
-    min-width: 10px;
-    border: 1px solid black;
-    background-color: rgba(255, 255, 255, 0.64);
-    backdrop-filter: blur(8px);
-    border-radius: 3px;
-    z-index: 9999999999;
-  }
-  
-  .cpanel-col-buttons:hover > * {
-    opacity: 0.5;
-  }
-  
-  .cpanel-col-buttons:hover > *:hover {
-    transform: scale(1.1);
-    opacity: 1;
-  }
-  
-  .cpanel-shadow {
-    box-shadow: 4px 4px 0px rgb(0 0 0 / 16%);
-  }
-  
-  .cpanel-col:not(:last-child) {
-    border-right: 1px solid black;
-  }
-  
-  .clabel {
-    font-size: 12px;
-    font-weight: bold;
-    color: black;
-    padding: 5px;
-  }
-  
-  .cbutton {
-    width: 50px;
-    height: 50px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border-radius: 3px;
-    cursor: pointer;
-  }
-  
-  .cbuttoninner {
-    width: 25px;
-    height: 25px;
-  }
-  
-  .cbuttoninner:hover {
-    background-color: rgba(1, 1, 1, 0.1);
-  }
-  
-  .cbuttoninner-selected {
-    background-color: rgba(1, 1, 1, 0.3);
-  }
-  
-  .cbuttonmain {
-    border: 1px solid black;
-    color: black;
-    background-color: white;
-    width: 52px;
-    height: 52px;
-  }
-  
-  .flexRow {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-  }
-  
-  .minimal-input {
-    border: none;
-  }
-  
-  .minimal-input:focus {
-    outline: none;
-  }
-  
-  /* [contenteditable]:focus {
-    outline: 0px solid transparent;
-  } */
-  
-  /* Tooltip container */
-  
-  .tooltip .tooltiptext {
-    visibility: hidden;
-    width: 120px;
-    background-color: black;
-    color: #fff;
-    text-align: center;
-    padding: 5px 0;
-    border-radius: 6px;
-    margin-right: 200px;
-    position: absolute;
-    z-index: 1;
-  }
-  
-  .tooltip .tooltipbottom {
-    margin-top: 80px;
-    margin-right: 0px;
-    margin-left: 0px;
-  }
-  
-  .tooltip:hover .tooltiptext {
-    visibility: visible;
-  }
-  
-  #page-center-align-guide {
-    left: 50%;
-    transform: translateX(50vw);
-    touch-action: none;
-    pointer-events: none;
-    z-index: 99999999;
-  }
-  
-  .page-align-guide:not(.active) {
-    opacity: 0;
-  }
-  
-  .page-align-guide {
-    height: 100vh;
-    position: fixed;
-    width: 1px;
-    border-right: 1px solid red;
-    z-index: 99999999;
-    top: 0;
-    touch-action: none;
-    pointer-events: none;
-  }
-  
-  .mobile-align-guide {
-    border-right: 1px solid grey;
-    touch-action: none;
-    pointer-events: none;
-  }
-  
-  .mobile-align-bg {
-    background-color: rgba(0, 0, 0, 0.1);
-    z-index: 99999999;
-    touch-action: none;
-    pointer-events: none;
-  }
-  
-  /*
+ .tooltip .tooltiptext {
+  visibility: hidden;
+  width: 120px;
+  background-color: black;
+  color: #fff;
+  text-align: center;
+  padding: 5px 0;
+  border-radius: 6px;
+  margin-right: 200px;
+  position: absolute;
+  z-index: 1;
+}
+
+.tooltip .tooltipbottom {
+  margin-top: 80px;
+  margin-right: 0px;
+  margin-left: 0px;
+}
+
+.tooltip:hover .tooltiptext {
+  visibility: visible;
+}
+
+#page-center-align-guide {
+  left: 50%;
+  transform: translateX(50vw);
+  touch-action: none;
+  pointer-events: none;
+  z-index: 99999999;
+}
+
+.page-align-guide:not(.active) {
+  opacity: 0;
+}
+
+.page-align-guide {
+  height: 100vh;
+  position: fixed;
+  width: 1px;
+  border-right: 1px solid red;
+  z-index: 99999999;
+  top: 0;
+  touch-action: none;
+  pointer-events: none;
+}
+
+.mobile-align-guide {
+  border-right: 1px solid grey;
+  touch-action: none;
+  pointer-events: none;
+}
+
+.mobile-align-bg {
+  background-color: rgba(0, 0, 0, 0.1);
+  z-index: 99999999;
+  touch-action: none;
+  pointer-events: none;
+}
+
+/*
   Interthing Guide
   */
   
@@ -242,7 +238,7 @@
   
     box-sizing: border-box;
   }
-  
+
   /* SECTION: spinning circle animation  */
   
   .brocorpSaveSpinner {
@@ -439,24 +435,25 @@
   } */
   
   .dragd-modal {
-    position: fixed; /* Stay in place */
-    z-index: 1; /* Sit on top */
+    position: fixed;
+    z-index: 1;
     left: 0;
     top: 0;
-    width: 100%; /* Full width */
-    height: 100%; /* Full height */
-    overflow: auto; /* Enable scroll if needed */
-    background-color: rgb(0,0,0); /* Fallback color */
-    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+    width: 100%; /* Ancho al 100% de la ventana */
+    height: 100%; /* Alto al 100% de la ventana */
+    overflow: auto;
+    background-color: rgb(0, 0, 0);
+    background-color: rgba(0, 0, 0, 0.4);
   }
   
   /* Modal Content/Box */
   .dragd-modal-content {
     background-color: #fefefe;
-    margin: 15% auto; /* 15% from the top and centered */
+    margin: 0 auto; /* Centro horizontalmente en la ventana */
     padding: 20px;
     border: 1px solid #888;
-    width: 80%; /* Could be more or less, depending on screen size */
+    width: 100%; /* Ancho al 100% de la ventana */
+    height: 100%; /* Alto al 100% de la ventana */
   }
   
   .dropdown {
@@ -468,7 +465,7 @@
     position: absolute;
     background-color: #f9f9f9;
     min-width: 160px;
-    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
     padding: 12px 16px;
     z-index: 1;
   }

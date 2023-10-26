@@ -3,7 +3,8 @@ import React from "react";
 export default function DrawCoincides({ elemData, coincides, dragging }) {
   return (
     <>
-      {dragging && elemData.pos.x == 0 && (
+      {dragging && elemData.pos.x === 0 && (
+        // Línea de guía vertical centrada en la página
         <div
           className={"page-align-guide active page-center-align-guide"}
           style={{
@@ -11,7 +12,8 @@ export default function DrawCoincides({ elemData, coincides, dragging }) {
           }}
         />
       )}
-      {dragging && elemData.pos.x == 0 && (
+      {dragging && elemData.pos.x === 0 && (
+        // Marca de intersección vertical en el centro de la página
         <div
           className={"interthing-line-nub"}
           style={{
@@ -27,6 +29,7 @@ export default function DrawCoincides({ elemData, coincides, dragging }) {
         coincides.map((coincide) => {
           return (
             <>
+              {/* Marca de intersección en la posición del elemento coincidente */}
               <div
                 className={"interthing-line-nub"}
                 style={{
@@ -34,6 +37,7 @@ export default function DrawCoincides({ elemData, coincides, dragging }) {
                   top: coincide.pos.y,
                 }}
               />
+              {/* Marca de intersección en la posición del elemento arrastrado */}
               <div
                 className={"interthing-line-nub"}
                 style={{
@@ -41,7 +45,8 @@ export default function DrawCoincides({ elemData, coincides, dragging }) {
                   top: elemData.pos.y,
                 }}
               />
-              {coincide.pos.y == elemData.pos.y && (
+              {/* Líneas de guía para la alineación vertical y horizontal */}
+              {coincide.pos.y === elemData.pos.y && (
                 <div
                   style={{
                     position: "absolute",
@@ -55,7 +60,7 @@ export default function DrawCoincides({ elemData, coincides, dragging }) {
                   }}
                 />
               )}
-              {coincide.pos.x == elemData.pos.x && (
+              {coincide.pos.x === elemData.pos.x && (
                 <div
                   style={{
                     position: "absolute",

@@ -1,5 +1,6 @@
 import React, { useRef, useState } from "react";
 
+// Componente funcional que representa un menú desplegable
 export default function DropDownMenu({
   options,
   selectedOption,
@@ -12,9 +13,9 @@ export default function DropDownMenu({
 
   return (
     <div style={{ display: "flex", flexDirection: "column" }}>
-      <div class="dropdown">
+      <div className="dropdown">
         <button
-          class="button"
+          className="button"
           aria-haspopup="true"
           aria-controls="dropdown-menu"
           onClick={() => {
@@ -23,11 +24,12 @@ export default function DropDownMenu({
         >
           {type && type == "font" && (
             <>
+              {/* Enlaces de fuentes web si el tipo es "font" */}
               <link rel="preconnect" href="https://fonts.googleapis.com"></link>
               <link
                 rel="preconnect"
                 href="https://fonts.gstatic.com"
-                crossorigin
+                crossOrigin
               ></link>
               <link
                 href={`https://fonts.googleapis.com/css2?family=${
@@ -42,13 +44,13 @@ export default function DropDownMenu({
           >
             {selectedOption}
           </span>
-          <span class="icon is-small">
-            <i class="fas fa-angle-down" aria-hidden="true"></i>
+          <span className="icon is-small">
+            <i className="fas fa-angle-down" aria-hidden="true"></i>
           </span>
         </button>
         {selected && (
           <div
-            class="dropdown-content"
+            className="dropdown-content"
             id="dropdown-menu"
             role="menu"
             onBlur={() => {
@@ -57,7 +59,7 @@ export default function DropDownMenu({
           >
             <div
               ref={listInnerRef}
-              class="dropdown-content"
+              className="dropdown-content"
               style={{ maxHeight: "400px", overflowY: "scroll" }}
               onScroll={() => {
                 if (listInnerRef.current) {
@@ -79,12 +81,13 @@ export default function DropDownMenu({
                         setSelected(false);
                       }}
                       style={{ fontFamily: elem }}
-                      class={`dropdown-item ${
+                      className={`dropdown-item ${
                         elem == selectedOption && "is-active"
                       }`}
                     >
                       {type && type == "font" && (
                         <>
+                          {/* Enlaces de fuentes web si el tipo es "font" */}
                           <link
                             rel="preconnect"
                             href="https://fonts.googleapis.com"
@@ -92,7 +95,7 @@ export default function DropDownMenu({
                           <link
                             rel="preconnect"
                             href="https://fonts.gstatic.com"
-                            crossorigin
+                            crossOrigin
                           ></link>
                           <link
                             href={`https://fonts.googleapis.com/css2?family=${elem
@@ -109,7 +112,8 @@ export default function DropDownMenu({
                   </>
                 );
               })}
-              {/* <hr class="dropdown-divider" /> */}
+              {/* Línea divisoria opcional */}
+              {/* <hr className="dropdown-divider" /> */}
             </div>
           </div>
         )}

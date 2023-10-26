@@ -8,14 +8,11 @@ import DraggableHtml from './DraggableHtml';
 import DraggableCrypto from './DraggableCrypto';
 
 function ComponentSelector({ elem, selected })  {
+    // Verifica si el elemento está seleccionado
     const isSelected = selected && selected.includes(elem.id);
+
+    // Renderiza componentes según el tipo del elemento
     switch (elem.type) {
-        // case 'test':
-        //     return (
-        //         <EditItem elemData={elem} selected={isSelected}>
-        //             Drag Me!
-        //         </EditItem>
-        //     );
         case 'text':
             return (
                 <DraggableText
