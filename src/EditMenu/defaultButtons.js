@@ -52,7 +52,6 @@ const defaultButtons = {
           },
           style: {
             backgroundColor: "blue",
-            borderRadius: 9999999,
           },
         },
       },
@@ -73,7 +72,7 @@ const defaultButtons = {
       },
       pentagon: {
         icon: "fas fa-star",
-        label: "Pentagon",
+        label: "star",
         action: "add",
         object: {
           type: "color",
@@ -140,44 +139,17 @@ const defaultButtons = {
     objects: {
       image: {
         icon: "fas fa-image",
-        label: "Add Image",
+        label: "Add Media",
         action: "add",
         object: {
-          type: "image",
+          type: "media",
           size: {
             width: 100,
             height: 100,
           },
-          imageUri:
-            "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9Ii0xMS41IC0xMC4yMzE3NCAyMyAyMC40NjM0OCI+CiAgPHRpdGxlPlJlYWN0IExvZ288L3RpdGxlPgogIDxjaXJjbGUgY3g9IjAiIGN5PSIwIiByPSIyLjA1IiBmaWxsPSIjNjFkYWZiIi8+CiAgPGcgc3Ryb2tlPSIjNjFkYWZiIiBzdHJva2Utd2lkdGg9IjEiIGZpbGw9Im5vbmUiPgogICAgPGVsbGlwc2Ugcng9IjExIiByeT0iNC4yIi8+CiAgICA8ZWxsaXBzZSByeD0iMTEiIHJ5PSI0LjIiIHRyYW5zZm9ybT0icm90YXRlKDYwKSIvPgogICAgPGVsbGlwc2Ugcng9IjExIiByeT0iNC4yIiB0cmFuc2Zvcm09InJvdGF0ZSgxMjApIi8+CiAgPC9nPgo8L3N2Zz4K",
         },
       },
-      video: {
-        icon: "fas fa-film",
-        label: "Add Video",
-        action: "add",
-        object: {
-          type: "video", // Tipo de elemento a agregar (en este caso, video)
-          size: {
-            width: 100,
-            height: 100,
-          },
-          videoUri: "https://www.youtube.com/watch?v=dQw4w9WgXcQ", // URL del video
-        },
-      },
-      audio: {
-        icon: "fas fa-volume-up",
-        label: "Add Audio",
-        action: "add",
-        object: {
-          type: "audio", // Tipo de elemento a agregar (en este caso, audio)
-          size: {
-            width: 100,
-            height: 100,
-          },
-          audioUri: "https://example.com/audio.mp3",
-        },
-      },
+      
     },
   },
   giphy: {
@@ -199,18 +171,6 @@ const defaultButtons = {
         text: "Add your code here!",
     },
 },
-  template: {
-    icon: "far fa-object-group",
-    action: "modal",
-    selector: "template",
-    label: "Add Template",
-  },
-  head: {
-    icon: "fas fa-sliders-h",
-    label: "Add Head",
-    selector: "headconf",
-    action: "selector",
-  },
 };
 
 export default defaultButtons;

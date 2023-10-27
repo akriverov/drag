@@ -3,7 +3,7 @@ import { Input } from "../utils/helpers";
 import SiteContext from "../pageContext";
 import EditItem from "./DDEditor/EditItem";
 
-function DraggableImage(props) {
+function DraggableMedia(props) {
   const { elemData, selected } = props;
   const siteData = useContext(SiteContext);
   const {
@@ -13,6 +13,8 @@ function DraggableImage(props) {
     setModal,
   } = siteData;
 
+  const [mediaType, setMediaType] = useState("image"); // Default to image
+
   function onLocalUpdate(newProps) {
     var updatedProps = {
       ...newProps,
@@ -20,46 +22,19 @@ function DraggableImage(props) {
     onUpdated(elemData.id, updatedProps);
   }
 
-  function setImageUri(uri) {
-    onLocalUpdate({ imageUri: uri });
+  function setMediaUri(uri) {
+    onLocalUpdate({ mediaUri: uri });
   }
 
-  function toDataURL(src, callback, outputFormat) {
-    var img = new Image();
-    img.crossOrigin = "Anonymous";
-    img.onload = function () {
-      var canvas = document.createElement("CANVAS");
-      var ctx = canvas.getContext("2d");
-      var dataURL;
-      canvas.height = this.naturalHeight;
-      canvas.width = this.naturalWidth;
-      ctx.drawImage(this, 0, 0);
-      dataURL = canvas.toDataURL(outputFormat);
-      callback(dataURL);
-    };
-    img.src = src;
-    if (img.complete || img.complete === undefined) {
-      img.src =
-        "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///ywAAAAAAQABAAACAUwAOw==";
-      img.src = src;
-    }
-  }
-
-  async function loadImageToUri() {
+  async function loadMediaToUri() {
     const [file] = await window.showOpenFilePicker();
     const locFile = await file.getFile();
     const stream = await locFile.arrayBuffer();
     var blob = new Blob([stream], { type: locFile.type });
     var urlCreator = window.URL || window.webkitURL;
-    var imageUrl = urlCreator.createObjectURL(blob);
+    var mediaUrl = urlCreator.createObjectURL(blob);
 
-    toDataURL(
-      imageUrl,
-      (dataUrl) => {
-        setImageUri(dataUrl);
-      },
-      locFile.type
-    );
+    setMediaUri(mediaUrl);
   }
 
   function PanelControls() {
@@ -67,16 +42,16 @@ function DraggableImage(props) {
       <>
         <Input
           placeholder={"src"}
-          value={elemData.imageUri}
+          value={elemData.mediaUri}
           onChange={(value) => {
-            setImageUri(value);
+            setMediaUri(value);
           }}
         />
 
         <div
           className={"cbutton cbuttoninner"}
           onClick={() => {
-            loadImageToUri();
+            loadMediaToUri();
           }}
         >
           <img
@@ -98,6 +73,14 @@ function DraggableImage(props) {
         >
           <i className="fas fa-arrows-alt-h" />
         </div>
+        <select
+          value={mediaType}
+          onChange={(e) => setMediaType(e.target.value)}
+        >
+          <option value="image">Image</option>
+          <option value="video">Video</option>
+          <option value="audio">Audio</option>
+        </select>
       </>
     );
   }
@@ -113,17 +96,37 @@ function DraggableImage(props) {
         renderPanel={PanelControls}
         mode={mode}
       >
-        {!elemData.imageUri ? (
-          <center>Set an image URL</center>
+        {mediaType === "image" ? (
+          !elemData.mediaUri ? (
+            <center>Set an image URL</center>
+          ) : (
+            <img
+              style={{ width: "100%", height: "100%" }}
+              src={elemData.mediaUri} // Utiliza la propiedad mediaUri para mostrar la imagen
+            />
+          )
+        ) : mediaType === "video" ? (
+          !elemData.mediaUri ? (
+            <center>Set a video URL</center>
+          ) : (
+            <video controls style={{ width: "100%", height: "100%" }}>
+              <source src={elemData.mediaUri} type="video/mp4" />
+              Your browser does not support the video tag.
+            </video>
+          )
         ) : (
-          <img
-            style={{ width: "100%", height: "100%" }}
-            src={elemData.imageUri} // Utiliza la propiedad imageUri para mostrar la imagen
-          />
+          !elemData.mediaUri ? (
+            <center>Set an audio URL</center>
+          ) : (
+            <audio controls style={{ width: "100%" }}>
+              <source src={elemData.mediaUri} type="audio/mpeg" />
+              Your browser does not support the audio element.
+            </audio>
+          )
         )}
       </EditItem>
     </>
   );
 }
 
-export default DraggableImage;
+export default DraggableMedia;

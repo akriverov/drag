@@ -26,9 +26,9 @@ export default function DrawCoincides({ elemData, coincides, dragging }) {
 
       {dragging &&
         coincides.length > 0 &&
-        coincides.map((coincide) => {
+        coincides.map((coincide, index) => {
           return (
-            <>
+            <div key={index}>
               {/* Marca de intersección en la posición del elemento coincidente */}
               <div
                 className={"interthing-line-nub"}
@@ -74,7 +74,7 @@ export default function DrawCoincides({ elemData, coincides, dragging }) {
                   }}
                 />
               )}
-            </>
+            </div>
           );
         })}
     </>

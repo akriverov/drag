@@ -1,11 +1,11 @@
 import React from 'react';
 import DraggableText from './DraggableText';
-import DraggableImage from './DraggableImage';
-import DraggableDiv from './DraggableDiv';
 import DraggableGiphy from './DraggableGiphy';
 import DraggableButton from './DraggableButton';
 import DraggableHtml from './DraggableHtml';
 import DraggableCrypto from './DraggableCrypto';
+import DraggableMedia from './DraggableMedia';
+import DraggableShape from './DraggleShapes';
 
 function ComponentSelector({ elem, selected })  {
     // Verifica si el elemento está seleccionado
@@ -27,9 +27,16 @@ function ComponentSelector({ elem, selected })  {
                     selected={isSelected}
                 />
             );
-        case 'image':
+        case 'shapes':
             return (
-                <DraggableImage
+                <DraggableShape
+                    elemData={elem}
+                    selected={isSelected}
+                />
+            );
+        case 'media':
+            return (
+                <DraggableMedia
                     elemData={elem}
                     selected={isSelected}
                 />
@@ -44,13 +51,6 @@ function ComponentSelector({ elem, selected })  {
         case 'giphy':
             return (
                 <DraggableGiphy
-                    elemData={elem}
-                    selected={isSelected}
-                />
-            );
-        case 'color':
-            return (
-                <DraggableDiv
                     elemData={elem}
                     selected={isSelected}
                 />
