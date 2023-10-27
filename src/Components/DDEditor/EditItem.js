@@ -1,19 +1,18 @@
-import React, { useState, useEffect, useRef, useContext } from 'react';
-import SiteContext from '../../pageContext';
-import ControlPanel from '../../EditMenu/ControlPanel';
-import DragCoincideLines from './dragCoincideLines';
+import React, { useState, useEffect, useRef, useContext } from "react";
+import SiteContext from "../../pageContext";
+import ControlPanel from "../../EditMenu/ControlPanel";
+import DragCoincideLines from "./dragCoincideLines";
 
 import {
-    usePrevious,
-    getElementOffset,
-    getAngle,
-    getLength,
-    degToRadian,
-    isMobile,
-    getMobileScaleRatio,
-    isMobileViewport,
-} from '../../utils/helpers';
-
+  usePrevious,
+  getElementOffset,
+  getAngle,
+  getLength,
+  degToRadian,
+  isMobile,
+  getMobileScaleRatio,
+  isMobileViewport,
+} from "../../utils/helpers";
 
 const dragHandleOffset = 5;
 const pageCenterSnapDistance = 20;
@@ -238,60 +237,58 @@ function EditItem(props) {
 
   return (
     <>
-        {/* SECTION: ALIGNMENT GRIDS */}
-        {selected && (
-            <DragCoincideLines
-                elemData={elemData}
-                dragging={movementType === movementTypes.DRAGGING}
-                coincides={coincides}
-            />
-        )}
+      {/* SECTION: ALIGNMENT GRIDS */}
+      {selected && (
+        <DragCoincideLines
+          elemData={elemData}
+          dragging={movementType === movementTypes.DRAGGING}
+          coincides={coincides}
+        />
+      )}
 
-        {/* SECTION: CONTROL PANEL */}
-        {selected && (
-            <>
-                <ControlPanel
-                    elemData={elemData}
-                    saveElemJson={saveElemJson}
-                    setModal={setModal}
-                    CustomPanel={props.renderPanel}
-                    onLocalUpdate={props.onLocalUpdate}
-                ></ControlPanel>
-            </>
-        )}
+      {/* SECTION: CONTROL PANEL */}
+      {selected && (
+        <>
+          <ControlPanel
+            elemData={elemData}
+            saveElemJson={saveElemJson}
+            setModal={setModal}
+            CustomPanel={props.renderPanel}
+            onLocalUpdate={props.onLocalUpdate}
+          ></ControlPanel>
+        </>
+      )}
 
-        {/* SECTION: DRAGGABLE RECT */}
-        {mode === 'edit' ? (
-            <Rect
-                ref={divRef}
-                className={mode === 'edit' ? 'draggable' : ''}
-                elemData={elemData}
-                selected={selected}
-                onMouseDownDrag={onMouseDown}
-                onMouseDownRes={onMouseDownRes}
-                onMouseDownRot={onMouseDownRot}
-            >
-                <div
-                    style={{
-                        width: '100%',
-                        height: '100%',
-                        pointerEvents:
-                            selected && elemData.type !== 'text'
-                                ? 'none'
-                                : undefined,
-                        zIndex: elemData.zIndex,
-                    }}
-                >
-                    {props.children}
-                </div>
-            </Rect>
-        ) : (
-            <LinkWrapper link={elemData.href}>
-                <Rect elemData={elemData}>{props.children}</Rect>
-            </LinkWrapper>
-        )}
+      {/* SECTION: DRAGGABLE RECT */}
+      {mode === "edit" ? (
+        <Rect
+          ref={divRef}
+          className={mode === "edit" ? "draggable" : ""}
+          elemData={elemData}
+          selected={selected}
+          onMouseDownDrag={onMouseDown}
+          onMouseDownRes={onMouseDownRes}
+          onMouseDownRot={onMouseDownRot}
+        >
+          <div
+            style={{
+              width: "100%",
+              height: "100%",
+              pointerEvents:
+                selected && elemData.type !== "text" ? "none" : undefined,
+              zIndex: elemData.zIndex,
+            }}
+          >
+            {props.children}
+          </div>
+        </Rect>
+      ) : (
+        <LinkWrapper link={elemData.href}>
+          <Rect elemData={elemData}>{props.children}</Rect>
+        </LinkWrapper>
+      )}
     </>
-);
+  );
 }
 
 const Rect = React.forwardRef((props, ref) => {

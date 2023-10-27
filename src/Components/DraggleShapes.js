@@ -1,7 +1,7 @@
 import React, { useContext } from "react";
-import EditItem from "./DDEditor/EditItem";
 import SiteContext from "../pageContext";
 import defaultButtons from "../EditMenu/defaultButtons";
+import EditItem from "./DDEditor/EditItem";
 
 function DraggableShape(props) {
   const { elemData } = props;
@@ -21,21 +21,10 @@ function DraggableShape(props) {
     const shapes = defaultButtons.shapes;
     const shapeData = shapes.objects[shapeType];
 
-    return (
-      <>
-        <div
-          style={{
-            width: style.size.width,
-            height: style.size.height,
-            backgroundColor: style.backgroundColor,
-            borderRadius: style.borderRadius || "0",
-          }}
-        />
-      </>
-    );
-  }
-  return (
 
+  }
+
+  return (
     <>
       <EditItem
         elemData={elemData}
@@ -45,10 +34,7 @@ function DraggableShape(props) {
         key={props.elemData.id + "__item"}
         mode={mode}
       >
-        <div style={{ width: "100%", height: "100%", ...elemData.style }}>
-          {renderShape(elemData.shapeType, elemData.style)}
-          
-        </div>
+          <i className={elemData.icon}></i>
       </EditItem>
     </>
   );

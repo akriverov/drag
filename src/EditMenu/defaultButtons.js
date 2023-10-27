@@ -30,13 +30,11 @@ const defaultButtons = {
         label: "Rectangle",
         action: "add",
         object: {
-          type: "color",
+          icon: "fas fa-square-full",
+          type: "shapes",
           size: {
             width: 100,
             height: 100,
-          },
-          style: {
-            backgroundColor: "grey",
           },
         },
       },
@@ -45,13 +43,11 @@ const defaultButtons = {
         label: "Circle",
         action: "add",
         object: {
-          type: "color",
+          icon: "fas fa-circle",
+          type: "shapes",
           size: {
             width: 100,
             height: 100,
-          },
-          style: {
-            backgroundColor: "blue",
           },
         },
       },
@@ -60,13 +56,11 @@ const defaultButtons = {
         label: "Triangle",
         action: "add",
         object: {
-          type: "color",
+          icon: "fas fa-play",
+          type: "shapes",
           size: {
             width: 100,
             height: 100,
-          },
-          style: {
-            backgroundColor: "green",
           },
         },
       },
@@ -75,13 +69,11 @@ const defaultButtons = {
         label: "star",
         action: "add",
         object: {
-          type: "color",
+          icon: "fas fa-star",
+          type: "shapes",
           size: {
             width: 100,
             height: 100,
-          },
-          style: {
-            backgroundColor: "orange",
           },
         },
       },
@@ -90,14 +82,13 @@ const defaultButtons = {
         label: "Heart",
         action: "add",
         object: {
-          type: "color",
+          icon: "fas fa-heart",
+          type: "shapes",
           size: {
             width: 100,
             height: 100,
           },
-          style: {
-            backgroundColor: "red",
-          },
+
         },
       },
       diamond: {
@@ -105,13 +96,11 @@ const defaultButtons = {
         label: "Diamond",
         action: "add",
         object: {
-          type: "color",
+          icon: "fas fa-gem",
+          type: "shapes",
           size: {
             width: 100,
             height: 100,
-          },
-          style: {
-            backgroundColor: "purple",
           },
         },
       },
@@ -120,13 +109,11 @@ const defaultButtons = {
         label: "Star",
         action: "add",
         object: {
-          type: "color",
+          icon: "fas fa-star",
+          type: "shapes",
           size: {
             width: 100,
             height: 100,
-          },
-          style: {
-            backgroundColor: "yellow",
           },
         },
       },
