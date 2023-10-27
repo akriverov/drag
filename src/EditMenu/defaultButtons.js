@@ -31,11 +31,13 @@ const defaultButtons = {
         action: "add",
         object: {
           icon: "fas fa-square-full",
+          name: 'square',
           type: "shapes",
           size: {
             width: 100,
             height: 100,
           },
+          style: {}
         },
       },
       circle: {
