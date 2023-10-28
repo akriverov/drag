@@ -31,11 +31,13 @@ const defaultButtons = {
         action: "add",
         object: {
           icon: "fas fa-square-full",
+          name: 'square',
           type: "shapes",
           size: {
             width: 100,
             height: 100,
           },
+          style: {}
         },
       },
       circle: {
@@ -44,24 +46,28 @@ const defaultButtons = {
         action: "add",
         object: {
           icon: "fas fa-circle",
+          name: 'circle',
           type: "shapes",
           size: {
             width: 100,
             height: 100,
           },
+          style: {}
         },
       },
       triangle: {
         icon: "fas fa-play",
-        label: "Triangle",
+        label: "triangle",
         action: "add",
         object: {
           icon: "fas fa-play",
+          name: 'triangle',
           type: "shapes",
           size: {
             width: 100,
             height: 100,
           },
+          style: {}
         },
       },
       pentagon: {
@@ -70,11 +76,13 @@ const defaultButtons = {
         action: "add",
         object: {
           icon: "fas fa-star",
+          name: 'start',
           type: "shapes",
           size: {
             width: 100,
             height: 100,
           },
+          style: {}
         },
       },
       heart: {
@@ -83,12 +91,13 @@ const defaultButtons = {
         action: "add",
         object: {
           icon: "fas fa-heart",
+          name: 'heart',
           type: "shapes",
           size: {
             width: 100,
             height: 100,
           },
-
+          style: {}
         },
       },
       diamond: {
@@ -97,24 +106,13 @@ const defaultButtons = {
         action: "add",
         object: {
           icon: "fas fa-gem",
+          name: 'diamond',
           type: "shapes",
           size: {
             width: 100,
             height: 100,
           },
-        },
-      },
-      star: {
-        icon: "fas fa-star",
-        label: "Star",
-        action: "add",
-        object: {
-          icon: "fas fa-star",
-          type: "shapes",
-          size: {
-            width: 100,
-            height: 100,
-          },
+          style: {}
         },
       },
     },

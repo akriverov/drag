@@ -469,3 +469,13 @@
     padding: 12px 16px;
     z-index: 1;
   }
+
+  .shape__icon{
+    height: 100%;
+    width: 100%;
+  }
+  .shape__icon::before{
+    display: inline-block;
+    height: 100%;
+    width: 100%;
+  }
